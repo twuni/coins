@@ -22,6 +22,8 @@ class Coin
   end
 
   def merge( other )
+    raise "Coin #{other.id} is no longer valid." unless @@coins.include?(other)
+    raise "Coin #@id is no longer valid." unless @@coins.include?(self)
     @@coins.delete(self)
     @@coins.delete(other)
     Coin.create( other.value + @value )
